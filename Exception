@@ -1,0 +1,51 @@
+QUESTION:
+
+Java’s “Exception Handling” mechanism enables programmers to write robust and fault tolerant
+programs. Exception handling enables programmers to remove errs-handling code from the
+“main-line” of the program’s execution, improving program clarity and enhancing modifiability.
+Such Flexibility reduces the likelihood that errors will be overlooked, thus making programs more
+robust. 
+
+Now write a program that will safely divide one integer by another. See the sample output below:
+Sample Execution:
+Please enter num1: 100
+Please enter num2: 7
+Result: 100/7 = 14
+Please enter num1: 100
+Please enter a num2: hello
+Exception: java.util.InputMismatchExecption
+You must enter integer. Please try again
+Please enter a num1: 100
+Please enter a number2: 0
+Exception: java.lang.ArithmeticException: / by zero
+You must enter integer. Please try again
+Please enter a num1:
+
+
+
+CODE:
+
+package exception;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+public class Exception {
+    public static void main(String[] args) {
+    while(true){
+    try{
+        Scanner input = new Scanner(System.in);
+        System.out.print("please enter num1 :");
+        int num1 = input.nextInt();
+        System.out.print("please enter num2 :");
+        int num2 = input.nextInt();
+        int result = num1/num2;
+        System.out.println("Result:"+num1 +"/"+num2 +" = "+result);
+       }catch (ArithmeticException e){		
+			System.out.println("Exception: "+e);
+			System.out.println("You must enter integer. Please try again");
+       }catch(InputMismatchException e){
+                 System.out.println("Exception: "+e);
+                 System.out.println("You must enter integer.please try again");
+          }  
+       }    
+    }
+}
